@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Digitalsanthe</title>
+      </head>
+<body class="bg-light">
+        <header>
+                <nav class="navbar navbar-expand-lg navbar-light  bg-success fixed-top scrolling-navbar">
+                    <a class="navbar-brand nav-link text-uppercase font-weight-bold text-white ml-2" href="/">Digitalsanthe</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon "></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active"><a href="/buy/" class="nav-link text-uppercase font-weight-bold  text-white ml-2">Buy</a></li>
+                            <li class="nav-item "><a href="/sell/"class="nav-link text-uppercase font-weight-bold text-white ml-2 " >Sell</a></li>
+                            <li class="nav-item "><a href="/profile/"class="nav-link text-uppercase font-weight-bold text-white ml-2" >profile</a></li>
+                            <li class="nav-item "><a href="/logout/"class="nav-link text-uppercase font-weight-bold text-white " >Logout</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+ <main class="mt-5">
+ <div class="container " style="margin-top: 5rem;">
+        <form class="shadow bg-white rounded"  style="border-width:medium;"id="add">
+                <div class="row ml-2 mt-5 justify-content-center">
+                  <div class="col-md-6 text-center">
+                    <h3 class=" py-2 font-weight-bold ">ENTER DETAILS</h3>
+                  </div>
+                </div>
+                <div class="row ml-2 mr-2 mt-2">
+                    <div class="form-group col-md-4">
+                        <label for="accountname">Product name</label>
+                            <input type="text" class="form-control" id="name" required >
+              
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="type">Product type</label>
+                        <select class="form-control" id='type'>
+                            <option>vegetables</option>
+                            <option>fruits</option>
+                            <option>cereals</option>
+                        </select>
+                    </div>
+                               
+                    <div class="form-group col-md-3">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" class="form-control" id="quantity"required >
+                    </div>
+    
+                </div>
+                           
+                <div class="row ml-2 mt-2">
+                    <div class="col-md-4">
+                        <p>Discription</p>
+                    </div>
+    
+                </div>
+                <div class="row ml-2 ">
+                    <div class="form-group col-md-6">
+                        <textarea class="form-control" rows="5" id="discription" required></textarea>
+                    </div>
+                </div>
+                <div class="row ml-2 ">
+                    <div class="form-group col-md-3">
+                        <label for="price">Price</label>
+                        <input class="form-control" type="number" id="price" required>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-secondary ml-4 mb-3 " value="upload" id="upload">        
+              </form>
+ </div>
+ </main> 
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/16581b654e.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#upload').click(function()
+        {
+            $.get(
+                '/upload/',
+                {'name':$("#name").val(),
+                'discription':$("#discription").val(),
+                'price':$("#price").val(),
+                'quantity':$("#quantity").val(),
+                'type':$("#type").val()},
+                function(response)
+                {
+                    if(response.data=="ok")
+                    {
+                        alert("successfully uploaded")
+                        location.reload()
+                    }
+                    else
+                    alert('error in upload try after sometimes')
+                }
+            )
+        })
+    })
+</script>  
+</body>
+</html>

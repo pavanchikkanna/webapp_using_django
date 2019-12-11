@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <!-- Required meta tags -->
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            
+                <!-- Bootstrap CSS -->
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                <title>Digitalsanthe</title>
+      
+              </head>
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light  bg-success fixed-top scrolling-navbar">
+            <a class="navbar-brand nav-link text-uppercase font-weight-bold text-white ml-2" href="/">Digitalsanthe</a>
+        </nav>
+    </header>
+    <main>
+     <div class="container "style="margin-top:8rem;">
+            <div class="row" style="margin-top: 3rem"></div>
+            <div class="row justify-content-center ">
+             
+                <div class="col-md-6 border-warning shadow bg-white "  style="border-width:medium;">
+                <!-- Nav tabs -->
+                <ul class="nav nav-pills px-5 " role="tablist">
+                    <li class="nav-item pills-1 ">
+                      <a class="nav-link active " id="signintab" data-toggle="tab" href="#panel7" role="tab">
+                        Sign in</a>
+                    </li>
+                    <li class="nav-item pills-2">
+                      <a class="nav-link " id="signuptab" data-toggle="tab" href="#panel8" role="tab">
+                        Sign up</a>
+                    </li>
+                  </ul>
+          
+                  <!-- Tab panels -->
+                  <div class="tab-content">
+                   
+                    <div class="tab-pane fade  show active" id="panel7" role="tabpanel" aria-labelledby="signintab">
+          
+                      <div class="modal-body">
+                        <form style="margin-top: 0rem;" id="signin">
+                            <div class="form-group">
+                              <label for="Inputemail"><i class="fas fa-user mr-1"></i>Email </label>
+                              <input type="email" class="form-control" id="signinemail" aria-describedby="emailHelp" required>
+                  
+                            </div>
+                            <div class="form-group">
+                              <label for="InputPassword"><i class="fas fa-lock prefix mr-1"></i>Password</label>
+                              <input type="password" class="form-control" id="signinpassword"  required >
+                            </div>
+                          
+                            <input type="submit" class="btn btn-dark" value="submit" >
+                           
+                          </form>
+                    
+                    </div>
+          
+                    </div>
+                    
+                    <div class="tab-pane fade" id="panel8" role="tabpanel" aria-labelledby="signuptab">
+          
+                      <div class="modal-body" >
+                        <form style="margin-top: 0rem;"  id="signup">
+                            <div class="form-group">
+                              <label for="InputEmail"> <i class="fas fa-envelope prefix mr-1"></i>Email address</label>
+                              <input type="email" class="form-control" id="signupemail" aria-describedby="emailHelp"   >
+                  
+                            </div>
+                            <div class="form-group">
+                                <label for="accountname"><i class="fas fa-user mr-1"></i>Account name</label>
+                                <input type="text" class="form-control" id="signupname"  >
+                              </div>
+                            
+        
+                            <div class="form-group">
+                              <label for="InputPassword"><i class="fas fa-lock prefix mr-1"></i>Password</label>
+                              <input type="password" class="form-control" id="signuppassword" minlength="8"  >
+                            </div>
+                          
+                            <input type="submit" class="btn btn-dark" value="submit">
+                          </form>
+                    
+                    </div>
+                    </div>
+                   
+                  </div>
+        
+                </div>
+              
+        
+              </div>
+              
+            
+                                   
+            </div>
+            <div class="row" style="margin-bottom: 5rem">
+        
+              </div>
+
+     </div>    
+    </main>
+    
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/16581b654e.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      //custome javascript programs
+     $(document).ready(function()
+     {
+         $('#signin').on('submit',function(e){
+           e.preventDefault()
+           $.get(
+             '/signin/',
+             {'email':$("#signinemail").val(),'password':$('#signinpassword').val()},
+             function(response){
+               if(response.data=="ok")
+               {
+                 window.location.href="/profile/"
+               }
+               else
+               alert("Invail email or password")
+             }
+           )
+         }),
+
+
+         $('#signup').on('submit',function(e){
+           e.preventDefault()
+          
+           $.get(
+             '/signup/',
+             {'email':$('#signupemail').val(),
+              'name':$('#signupname').val(),
+              'password':$('#signuppassword').val()},
+             function(response){
+               if(response.data=="ok")
+               {
+                 alert("Successfully registered")
+               }
+               else{
+                 alert("Email already registered")
+               }
+             }
+           )
+         })
+            
+     })
+    </script> 
+</body>
+
+</html>

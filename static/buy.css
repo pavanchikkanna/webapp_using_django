@@ -1,0 +1,18 @@
+#banner {
+    /* The image used */
+    background-image: url("vegetable-bg.jpg");
+  
+    /* Half height */
+    height: 18rem;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .searchbox{
+    margin-top:-2rem;
+  }
+  .product{
+    border-width: medium;
+  }
