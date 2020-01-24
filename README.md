@@ -2,7 +2,7 @@
 A digital market for farmers to do their business. Here they can sell their products and also buy from others.
 
 
-# Developed using :hearts:
+# Developed with
 
 **Front end :** HTML5, CSS3, Bootstrap4  
 
